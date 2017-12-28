@@ -1,5 +1,6 @@
 package com.londonappbrewery.destini;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +12,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     // TODO: Steps 4 & 8 - Declare member variables here:
 
@@ -126,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
           top.setVisibility(View.GONE);
           bottom.setVisibility(View.GONE);
           index=6;
+          end();
 
       }
       else
@@ -151,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
               top.setVisibility(View.GONE);
               bottom.setVisibility(View.GONE);
               index=4;
+              end();
 
           }
           else  {
@@ -158,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
               top.setVisibility(View.GONE);
               bottom.setVisibility(View.GONE);
               index=5;
-
+              end();
           }
 
 
@@ -176,6 +179,26 @@ public class MainActivity extends AppCompatActivity {
     outState.putInt("firstPart",index);
 
 }
+
+  public void end()
+  {
+      android.app.AlertDialog.Builder alert=new android.app.AlertDialog.Builder(this);
+      alert.setTitle("THE END");
+      alert.setCancelable(true);
+      alert.setMessage("HOPE YOU ENJOED THE ADVENTURE ");
+      alert.setPositiveButton("READ AGAIN", new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialogInterface, int i) {
+              story.setText(R.string.T1_Story);
+              top.setVisibility(View.VISIBLE);
+              bottom.setVisibility(View.VISIBLE);
+              top.setText(R.string.T1_Ans1);
+              bottom.setText(R.string.T1_Ans2);
+              index=1;
+          }
+      });
+      alert.show();
+  }
 
 
 }
